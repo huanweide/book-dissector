@@ -10,6 +10,24 @@
 | 构建 | `npm run build` | 成功，`dist/`（含 `dist/cli.js`）正常产出 |
 | 测试 | `npx vitest run` | **9 个文件 / 64 个用例全部通过** |
 | CLI 冒烟 | `node dist/cli.js probe` / `analyze --dry-run` / `templates` | 正常；GBK 文件正确解码；无章节文本触发警告横幅；dry-run 零 LLM 调用 |
+| **probe 三策略实跑** | `npx tsx src/cli.ts probe <fixture>` | novel-cn.txt → cjk-novel 4 章 high；gbk.txt → gb18030 检测（置信 0.89）+ cjk-novel 4 章；outline.md → toc 命中 6 条 high |
+| **analyze 全链路实跑（v0.1.1 补）** | `npx tsx src/cli.ts analyze tests/fixtures/novel-cn.txt -p deepseek -d quick` | **真实 LLM 调用跑通**：map 1/1 → reduce 11 维度 100% → 输出 dissect.md(6.8KB)/dissect.json(13.6KB)/entities.json(2.2KB)；实体 5 个已别名归并（白发老人=老人、古城遗迹=城池废墟）；每条 fact 带原文依据与 confidence；零崩溃零降级 |
+
+## 0. v0.1.1 实跑补记（2026-10-17）
+
+静态门禁全绿之后，用真实 DeepSeek key 对 `novel-cn.txt`（242 字 4 章）跑了
+一次完整 `analyze`（deepseek-chat，quick 深度）。这是第一次真跑 map-reduce
+两阶段 + 实体归并 + 三格式输出，结果：**全链路零降级**。三个此前只能看
+测试断言判断的行为得到实跑确认——
+
+1. **实体别名归并真的在工作**：「白发老人/老人」「古城遗迹/城池废墟」
+   在实体表里正确合并为单 ID，不是测试里造出来的理想数据；
+2. **每条 fact 带原文依据**（如「少年站在沙丘上，望着远方的城池」），
+   可溯源，不是 LLM 自由发挥；
+3. **reduce 11 个维度全部产出**（力量体系/金手指为 0 是内容本身没有，
+   流程没漏）——维度级摘要计数与文件一一对应。
+
+顺带确认：`out-test/` 产物清理后 git 工作区干净，无测试残留。
 
 ## 2. 修掉的 bug（共 11 个）
 
