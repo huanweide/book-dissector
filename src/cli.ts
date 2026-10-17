@@ -31,7 +31,7 @@ import { parseFormats, writeOutputs } from "./output/index.js";
 import { loadEnvFile, firstNonEmpty } from "./util/env.js";
 import { log, progress, warnBanner } from "./util/log.js";
 
-const VERSION = "0.1.0";
+const VERSION = "1.0.0";
 
 const program = new Command();
 program

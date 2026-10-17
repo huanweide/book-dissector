@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![文档: 中文](https://img.shields.io/badge/%E6%96%87%E6%A1%A3-%E4%B8%AD%E6%96%87-red)](#book-dissector)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](https://nodejs.org)
-[![Tests](https://img.shields.io/badge/tests-64%20passed-brightgreen)](#开发)
+[![Tests](https://img.shields.io/badge/tests-68%20passed-brightgreen)](#开发)
 
 一个通用书籍结构化拆解 CLI：读入 txt / md / epub / docx / pdf / srt，按 token 预算做 map-reduce 抽取，导出 md 报告、json 全量、SillyTavern lorebook、角色设定卡，以及**一段可直接喂给写作 AI 的系统提示词**。
 
@@ -187,7 +187,7 @@ node dist/cli.js analyze 你的书.epub -t webnovel -d standard -f md,json,loreb
 npm run build      # tsc 产出 dist/
 npm run typecheck  # tsc --noEmit
 npm run fixtures   # 重新生成 tests/fixtures（GBK txt / 极简 epub / 极简 docx / srt / 各策略语料）
-npm test           # vitest run（64 个用例）
+npm test           # vitest run（68 个用例）
 ```
 
 测试覆盖：编码检测（GBK 不乱码）、epub/docx/srt/md 解析、六种分章策略各一例、无章节号铁律用例（必须 `confidence:'none'` 并报警）、token 预算边界（刚好等于上限 / 超出一个字）、实体归并（萧炎/炎帝/萧家三少 → 同一 id）、429 指数退避重试、probe 零 LLM 调用、五种输出物渲染、模板 schema 校验。项目结构见 `src/` 各目录头部注释。

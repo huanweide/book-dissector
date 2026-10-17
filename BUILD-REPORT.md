@@ -108,3 +108,25 @@
 2. **PDF 只测了错误路径**：pdf-parse 已安装，测试喂非 PDF 缓冲区验证抛 `PdfUnsupportedError`；未构造真实文字层 PDF（需要额外生成成本，且 pdf-parse 对极简 PDF 支持不稳）。
 3. **Windows 一键脚本**未做（已列入 README Roadmap）。
 4. **mobi/azw3 不支持**（README「当前不能做什么」已声明）。
+
+---
+
+## 6. v1.0.0 收尾：补端到端测试 + 版本升 1.0.0（2026-10-17 下午）
+
+**用户要求「按实用性做完用户使用功能」。评估后：README 承诺的功能（六格式导入、六策略分章、map-reduce、五导出物、实体对齐、system-prompt）都已实现且零成本路径（probe / dry-run）实测可用；缺的是质量兜底与「成品」信号。**
+
+### 做的两件事
+
+1. **补上 BUILD-REPORT 第 5 节点名的缺口——map-reduce 流水线端到端测试**。新增 `tests/pipeline-e2e.test.ts`，**注入零网络 fake LLM client**（按 `MAP_SYSTEM` / `REDUCE_SYSTEM` 区分请求，返回合法结构化 JSON），跑完整链路：
+   - standard：9 条跨 chunk 候选被 reduce 归并成每维度 1 条（证明 map→reduce 全链跑通，不是直接透传）；
+   - deep：在 standard 基础上多追加一条「跨维度一致性校验」维度；
+   - 失败不静默：fake 返回非法 JSON 时按 `reason:'unknown'` 记录失败，绝不吞；
+   - pipeline 产物能被五种导出物消费（lorebook/cards/json 可被 `JSON.parse`、md/prompt 非空、角色卡进了 system-prompt）。
+   - 实测踩到的两个真问题（已修进测试）：① 假 chunk 缺 `chapterIndexes` 字段会触发 `buildMapPrompt` 里 `chunk.chapterIndexes.join` 崩溃——说明 `TextChunk.chapterIndexes` 是必填，测试桩必须带；② 跨 chunk 同名条目会被 `localDedupe` 合并成 ≤6，触发不了 reduce，需用 chunk 序号造唯一名才能验证归并链路。
+2. **版本升 `0.1.0 → 1.0.0`**：功能已完整、文档齐全、零成本路径实测可用，作为「可用成品」信号。
+
+### 验证
+
+- `tsc -p tsconfig.json`：0 错误。
+- `vitest run`：**10 文件 / 68 用例全过**（原 64 + 新增 4 端到端）。
+- README 测试徽章与正文数字同步 64 → 68；`--version` 输出 `1.0.0`。
