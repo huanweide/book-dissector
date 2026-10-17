@@ -1,0 +1,60 @@
+{
+  "name": "book-dissector",
+  "version": "0.1.0",
+  "description": "什么书都能拆 —— 通用书籍结构化拆解 CLI（任意格式 × 任意类型 × 可导出中间态）",
+  "type": "module",
+  "license": "MIT",
+  "author": "ReTri",
+  "bin": {
+    "book-dissector": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "fixtures": "node scripts/gen-fixtures.mjs",
+    "start": "node dist/cli.js"
+  },
+  "keywords": [
+    "book",
+    "dissect",
+    "cli",
+    "epub",
+    "pdf",
+    "docx",
+    "llm",
+    "lorebook",
+    "map-reduce"
+  ],
+  "dependencies": {
+    "commander": "^12.1.0",
+    "iconv-lite": "^0.6.3",
+    "jszip": "^3.10.1",
+    "zod": "^3.23.8"
+  },
+  "optionalDependencies": {
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
+  }
+}
