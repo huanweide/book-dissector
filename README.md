@@ -13,6 +13,8 @@
 
 从 novel-forge 的拆书模块独立出来做的特化，目标用户：写网文的、写短视频脚本的、做读书笔记的、带娃拆教材的老师。卖点不是「总结得更好」，是**输出能拿去再用**。
 
+> **Topics（GitHub 仓库标签建议）**：`cli` `typescript` `llm` `ai-writing` `map-reduce` `epub` `sillytavern` `lorebook` `webnovel` `chinese-nlp` `book-analysis` `prompt-engineering`
+
 ---
 
 ## 它和别的 AI 拆书工具有什么不一样
