@@ -191,3 +191,15 @@ npm test           # vitest run（68 个用例）
 ```
 
 测试覆盖：编码检测（GBK 不乱码）、epub/docx/srt/md 解析、六种分章策略各一例、无章节号铁律用例（必须 `confidence:'none'` 并报警）、token 预算边界（刚好等于上限 / 超出一个字）、实体归并（萧炎/炎帝/萧家三少 → 同一 id）、429 指数退避重试、probe 零 LLM 调用、五种输出物渲染、模板 schema 校验。项目结构见 `src/` 各目录头部注释。
+
+## 🧰 同一作者的其他工具
+
+> 作者在做一系列开源效率工具，欢迎顺手点 Star 支持：
+
+- 📚 长篇创作 — AI 小说工坊，本地规则引擎零依赖：[点此访问](https://github.com/huanweide/novel-smith)
+- 🎓 网课助手 — 智慧树自动播放/续播/AI 答题：[点此访问](https://github.com/huanweide/zhihuishu-helper)
+- 🎬 字幕/视频 — B站字幕一键提取（零 Key 取官方字幕）：[点此访问](https://github.com/huanweide/bili-subtitle-universal)
+- 📺 实时字幕 — 直播/会议实时字幕：[点此访问](https://github.com/huanweide/live-subtitle)
+- ✂️ 视频摘要 — 长视频一键总结：[点此访问](https://github.com/huanweide/video-brief)
+- 🖥️ 总览 — 作者全部开源项目集散：[点此访问](https://github.com/huanweide/family-showcase)
+- 🩺 代码健康 — 零依赖多轴静态体检：[点此访问](https://github.com/huanweide/doctors)
