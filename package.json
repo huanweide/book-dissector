@@ -1,6 +1,6 @@
 {
   "name": "book-dissector",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "什么书都能拆 —— 通用书籍结构化拆解 CLI（任意格式 × 任意类型 × 可导出中间态）",
   "type": "module",
   "license": "MIT",

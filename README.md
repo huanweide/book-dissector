@@ -1,8 +1,17 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="book-dissector">
+</p>
+
+<p align="center">
+  <a href="#它和别的-ai-拆书工具有什么不一样">30 秒看懂</a> · <a href="#支持矩阵">能力</a> · <a href="#快速开始">快速开始</a> · <a href="#设计取舍">架构</a> · <a href="#开发">开发</a>
+</p>
+
 # book-dissector
 
 **把一本书拆成能直接拿去用的零件。**
 
 [![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
+[![CI](https://github.com/huanweide/book-dissector/actions/workflows/ci.yml/badge.svg)](https://github.com/huanweide/book-dissector/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![文档: 中文](https://img.shields.io/badge/%E6%96%87%E6%A1%A3-%E4%B8%AD%E6%96%87-red)](#book-dissector)

@@ -13,7 +13,7 @@ secrets/
 
 # 拆解产物（可能含原文片段，默认不入库）
 out/
-output/
+/output/
 *.dissect.json
 
 # 编辑器 / 系统
