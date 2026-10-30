@@ -20,7 +20,7 @@
 
 一个通用书籍结构化拆解 CLI：读入 txt / md / epub / docx / pdf / srt，按 token 预算做 map-reduce 抽取，导出 md 报告、json 全量、SillyTavern lorebook、角色设定卡，以及**一段可直接喂给写作 AI 的系统提示词**。
 
-从 novel-forge 的拆书模块独立出来做的特化，目标用户：写网文的、写短视频脚本的、做读书笔记的、带娃拆教材的老师。卖点不是「总结得更好」，是**输出能拿去再用**。
+从 novel-smith 的拆书模块独立出来做的特化，目标用户：写网文的、写短视频脚本的、做读书笔记的、带娃拆教材的老师。卖点不是「总结得更好」，是**输出能拿去再用**。
 
 > **Topics（GitHub 仓库标签建议）**：`cli` `typescript` `llm` `ai-writing` `map-reduce` `epub` `sillytavern` `lorebook` `webnovel` `chinese-nlp` `book-analysis` `prompt-engineering`
 
@@ -28,7 +28,7 @@
 
 ## 它和别的 AI 拆书工具有什么不一样
 
-这张表是本项目存在的理由。左列是原型（novel-forge 拆书模块）真实踩过的坑，右列是本作的修法：
+这张表是本项目存在的理由。左列是原型（novel-smith 拆书模块）真实踩过的坑，右列是本作的修法：
 
 | # | 原型的坑 | 本作的修法 |
 |---|---------|-----------|
